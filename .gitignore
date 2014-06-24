@@ -52,3 +52,13 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# PyCharm/IntelliJ IDEA files
+.idea
+*.iml
+*.ipr
+
+# vi files
+*.orig
+
+# OS X files
+.DS_Store
