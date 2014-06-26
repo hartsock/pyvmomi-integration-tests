@@ -23,7 +23,7 @@ connections.yaml
 Connection information for the tests is stored in a local yaml file that we
 do *not* check into the repository. The file name is connections.yaml and
 the format is:
-
+```
  # YAML
  vcsim:
    host: my.host
@@ -35,3 +35,4 @@ the format is:
    user: my.other.user
    pwd: my.other.password
    port: 443
+```
