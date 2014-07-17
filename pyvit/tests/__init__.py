@@ -9,3 +9,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+from pyvit import common
+import os
+
+CONFIG_FILE_NAME = os.path.join(os.path.dirname(__file__),
+                                '../../connections.yaml')
+
+
+def load_connections():
+    with open(CONFIG_FILE_NAME, 'r') as f:
+        return common.YamlConnections(f)

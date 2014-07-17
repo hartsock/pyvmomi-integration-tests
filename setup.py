@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="pyvit",
+    name="pyvmomi-integration-tests",
     version="0.0.0alpha",
     description="pyVmomi Integration Test Suite",
     author="VMware",
@@ -24,10 +24,10 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3'
+        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    packages=find_packages(exclude=['docs', 'tests', 'samples']),
+    packages=['pyvit'],
+    test_suite='pyvit.tests',
     include_package_data=True,
     install_requires=['pyvmomi', 'testtools>=0.9.34', 'fixtures>=0.3.14',
                       'testfixtures', 'testscenarios>=0.4',

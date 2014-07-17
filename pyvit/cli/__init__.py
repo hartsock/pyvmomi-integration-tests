@@ -11,18 +11,24 @@
 # limitations under the License.
 
 import unittest
+from pyvit import tests
 
 def run_tests_for(module_name_list):
+    print(module_name_list)
     suite = unittest.TestSuite()
 
     for module_name in module_name_list:
+        print(module_name)
         try:
             # if the module defines a suite() function call it to run the suite
             module = __import__(module_name, globals(), locals(), ['suite'])
             suite_function = getattr(module, 'suite')
             suite.addTest(suite_function)
         except (ImportError, AttributeError):
+            print("load everything")
             # otherwise we'll just load *everything* we can find
+            tests = unittest.defaultTestLoader.loadTestsFromModule(tests.vcsim)
+            print(tests)
             suite.addTest(
                 unittest.defaultTestLoader.loadTestsFromName(module_name))
 

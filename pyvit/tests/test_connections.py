@@ -10,15 +10,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from pyvit.common import YamlConnections
 import os
+import sys
 import unittest
 
-CONFIG_FILE_NAME = os.path.join(os.path.dirname(__file__),
-                                '../../connections.yaml')
+from pyvit.tests import load_connections
 
-class BaseTest(unittest.TestCase):
+class TestConnectionFile(unittest.TestCase):
 
-    def setUp(self):
-        with open(CONFIG_FILE_NAME, 'r') as f:
-            self.connections = YamlConnections(f)
+    def test_connection_file_is_present(self):
+        con = load_connections()
+

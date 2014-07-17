@@ -11,13 +11,19 @@
 # limitations under the License.
 
 import atexit
+import unittest
 
-from pyvit.common import tests
 from pyVim import connect
 
-class BasicConnection(tests.BaseTest):
+from pyvit.tests import load_connections
 
-    def test_smart_connect(self):
+class BaseTestCase(unittest.TestCase):
+
+    def setUp(self):
+        self.connections = load_connections()
+
+    @property
+    def session_instance(self):
         con = self.connections.vcsim
         service_instance = connect.SmartConnect(host=con.host,
                                                 user=con.user,
@@ -26,3 +32,4 @@ class BasicConnection(tests.BaseTest):
         atexit.register(connect.Disconnect, service_instance)
         session_id = service_instance.content.sessionManager.currentSession.key
         self.assertIsNotNone(session_id)
+        return service_instance

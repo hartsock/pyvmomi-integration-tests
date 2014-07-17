@@ -14,3 +14,5 @@ from pyvit.cli import run_tests_for
 
 def run_tests():
     run_tests_for(['pyvit.vcsim'])
+
+run_tests()
