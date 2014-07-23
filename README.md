@@ -3,6 +3,13 @@ pyvmomi-integration-tests
 
 pyVmomi Integration Testing Project for validating the pyVmomi library
 
+NOTE: Python 2.7 support only at this time. Python 3 support will lag
+Python 3 support in the core library.
+
+Usage
+-----
+ $ python setup.py test
+
 
 Test libraries used
 -------------------
