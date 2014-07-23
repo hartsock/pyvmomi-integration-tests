@@ -28,8 +28,7 @@ class TestExceptionMarshalling(BaseTestCase):
             while task.info.state not in [vim.TaskInfo.State.running,
                                           vim.TaskInfo.State.error]:
                 time.sleep(1)
-        lease = vm.ExportVm()
-        raise lease.error
+        vm.DefragmentAllDisks()
 
 
     @vcr.use_cassette('test_impossible_action.yaml',
