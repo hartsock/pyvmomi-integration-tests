@@ -1,1 +1,6 @@
-python-subunit
+mock
+requests>=2.3.0
+six>=1.7.3
+PyYAML>=3.11
+testtools>=0.9.34
+vcrpy

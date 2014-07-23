@@ -13,6 +13,12 @@
 from pyvit import common
 import os
 
+
+def tests_resource_path(local_path=''):
+    this_file = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(this_file, local_path)
+
+
 CONFIG_FILE_NAME = os.path.join(os.path.dirname(__file__),
                                 '../../connections.yaml')
 
@@ -20,3 +26,8 @@ CONFIG_FILE_NAME = os.path.join(os.path.dirname(__file__),
 def load_connections():
     with open(CONFIG_FILE_NAME, 'r') as f:
         return common.YamlConnections(f)
+
+
+# Fully qualified path to the fixtures directory underneath this module
+fixtures_path = tests_resource_path('cassettes')
+record_mode = 'all'

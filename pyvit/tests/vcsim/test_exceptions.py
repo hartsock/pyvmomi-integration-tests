@@ -12,7 +12,9 @@
 
 import atexit
 import time
+import vcr
 
+from pyvit.tests import fixtures_path, record_mode
 from pyVim import connect
 from pyVmomi import vim
 
@@ -29,6 +31,10 @@ class TestExceptionMarshalling(BaseTestCase):
         lease = vm.ExportVm()
         raise lease.error
 
+
+    @vcr.use_cassette('test_impossible_action.yaml',
+                      cassette_library_dir=fixtures_path,
+                      record_mode=record_mode)
     def test_impossible_action(self):
         si = self.session_instance
         root = si.content.rootFolder

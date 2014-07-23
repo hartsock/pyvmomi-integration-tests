@@ -65,3 +65,6 @@ docs/_build/
 
 # local configuration files
 connections.yaml
+
+# Never save fixtures
+pyvit/tests/cassettes/*.yaml

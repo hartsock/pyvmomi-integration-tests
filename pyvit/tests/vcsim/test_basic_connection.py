@@ -11,13 +11,19 @@
 # limitations under the License.
 
 import atexit
+import vcr
 
+from pyvit.tests import fixtures_path, record_mode
 from pyVim import connect
 
 from pyvit.tests.vcsim import BaseTestCase
 
+
 class BasicConnection(BaseTestCase):
 
+    @vcr.use_cassette('test_smart_connect.yaml',
+                      cassette_library_dir=fixtures_path,
+                      record_mode=record_mode)
     def test_smart_connect(self):
         con = self.connections.vcsim
         service_instance = connect.SmartConnect(host=con.host,
