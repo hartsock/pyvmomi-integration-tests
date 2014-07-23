@@ -33,3 +33,16 @@ class BasicConnection(BaseTestCase):
         atexit.register(connect.Disconnect, service_instance)
         session_id = service_instance.content.sessionManager.currentSession.key
         self.assertIsNotNone(session_id)
+
+    @vcr.use_cassette('test_basic_connect.yaml',
+                      cassette_library_dir=fixtures_path,
+                      record_mode=record_mode)
+    def test_basic_connect(self):
+        con = self.connections.vcsim
+        service_instance = connect.Connect(host=con.host,
+                                           user=con.user,
+                                           pwd=con.password,
+                                           port=con.port)
+        atexit.register(connect.Disconnect, service_instance)
+        session_id = service_instance.content.sessionManager.currentSession.key
+        self.assertIsNotNone(session_id)
